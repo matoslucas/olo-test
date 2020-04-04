@@ -26,9 +26,7 @@ const combineToppingsCounter = (p, n) => {
 };
 
 const sortToppings = (a, b) => {
-	const result = parseInt(a[1]) < parseInt(b[1]) ? 1 : parseInt(a[1]) > parseInt(b[1]) ? -1 : 0;
-
-	return result;
+	return parseInt(a[1]) < parseInt(b[1]) ? 1 : parseInt(a[1]) > parseInt(b[1]) ? -1 : 0;
 };
 
 const renderRow = (item, index) => {
