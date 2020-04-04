@@ -14,7 +14,7 @@ const toppingsCounter = (p, n) => {
 
 	return p;
 };
-
+// reducer 
 const combineToppingsCounter = (p, n) => {
 	const key = n.toppings.sort().map((item) => item.split(' ').join('-')).join('_');
 	if (p[key]) {
@@ -25,6 +25,7 @@ const combineToppingsCounter = (p, n) => {
 	return p;
 };
 
+// sorter function
 const sortToppings = (a, b) => {
 	return parseInt(a[1]) < parseInt(b[1]) ? 1 : parseInt(a[1]) > parseInt(b[1]) ? -1 : 0;
 };
