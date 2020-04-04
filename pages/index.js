@@ -15,7 +15,7 @@ const toppingsCounter = (p, n) => {
 	return p;
 };
 
-let combineToppingsCounter = (p, n) => {
+const combineToppingsCounter = (p, n) => {
 	const key = n.toppings.sort().map((item) => item.split(' ').join('-')).join('_');
 	if (p[key]) {
 		p[key] = p[key] + 1;
