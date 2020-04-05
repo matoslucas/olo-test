@@ -14,7 +14,7 @@ const toppingsCounter = (p, n) => {
 
 	return p;
 };
-// reducer 
+// reducer
 const combineToppingsCounter = (p, n) => {
 	const key = n.toppings.sort().map((item) => item.split(' ').join('-')).join('_');
 	if (p[key]) {
@@ -43,8 +43,17 @@ const renderData = (data) => {
 	return data.map(renderRow);
 };
 
+const capitalizeFirstLetter = (string) => {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+const formatKey = (item) => {
+	item[0] = item[0].split('_').map((item) => capitalizeFirstLetter(item)).join(' ');
+	return item;
+};
+
 const formatDataToChart = (data) => {
-	var result = [ [ 'Topping Combinations', 'Qty' ], ...data ];
+	var result = [ [ 'Topping Combinations', 'Qty' ], ...data.map(formatKey) ];
 	return result;
 };
 
@@ -58,7 +67,7 @@ const GoogleGraph = ({ chartType, handleChartTypeChange, data, options }) => (
 			key={chartType}
 			chartType={chartType}
 			width={'80vw'}
-			height={'80vh'}
+			height={'100vh'}
 			loader={<div>Loading Chart</div>}
 			data={data}
 			options={options}
@@ -86,7 +95,8 @@ const Home = ({ data }) => {
 					handleChartTypeChange={handleChartTypeChange}
 					chartType={chart}
 					options={{
-						title: 'Top 20 Topping combinations'
+						title: 'Top 20 Topping combinations',
+						colors: [ '#0019E6', '#FFE800', '#FF6600', '#002C43', '#C32525' ]
 					}}
 				/>
 
